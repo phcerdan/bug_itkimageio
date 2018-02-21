@@ -6,18 +6,12 @@ option(USE_ITKIMAGEIO "Use ITKImageIO --available since ITK4.13" ON)
 # Since ITK4.13, ITKImageIO
 if (USE_ITKIMAGEIO) # All available IO
     set(use_itk_modules
-        IsotropicWavelets
-        ITKVtkGlue
         ITKImageIO
         )
 else (USE_ITKIMAGEIO) # Only a few IO
     set(use_itk_modules
-        IsotropicWavelets
-        ITKVtkGlue
         ITKIOImageBase
-        ITKIOPNG ITKIOJPEG
         ITKIOTIFF
-        ITKIONRRD
         )
 endif (USE_ITKIMAGEIO)
 find_package(ITK COMPONENTS ${use_itk_modules} REQUIRED)
@@ -28,7 +22,7 @@ message(status "** ITK Includes:  ${ITK_INCLUDE_DIRS}")
 include_directories("./include")
 
 add_executable(readTiff3D readTiff3D.cxx)
-target_link_libraries(readTiff3D ${Boost_LIBRARIES} ${ITK_LIBRARIES} ${VTK_LIBRARIES})
+target_link_libraries(readTiff3D ${ITK_LIBRARIES})
 
 enable_testing()
 add_test(NAME readTiff3DTest
