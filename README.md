@@ -22,3 +22,4 @@ Run the test with the included 3d tiff image fixture using:
 ctest -V
 ```
 
+Reported in itk discourse: https://discourse.itk.org/t/differences-between-using-component-itkimageio-and-explicitly-setting-itkiotiff/697
